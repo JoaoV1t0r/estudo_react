@@ -1,3 +1,4 @@
+import Proptypes from "prop-types";
 import "./style.css";
 
 export const TextInput = ({ handleChange, searchValue }) => (
@@ -9,3 +10,8 @@ export const TextInput = ({ handleChange, searchValue }) => (
     placeholder="Type your search"
   />
 );
+
+TextInput.propTypes = {
+  handleChange: Proptypes.func.isRequired,
+  searchValue: Proptypes.string.isRequired,
+};

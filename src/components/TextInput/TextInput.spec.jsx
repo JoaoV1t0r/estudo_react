@@ -5,13 +5,13 @@ import { TextInput } from ".";
 describe("<TextInput />", () => {
   it("should call handleChange function on each key pressed", () => {
     const fn = jest.fn();
-    render(<TextInput handleChange={fn} />);
+    render(<TextInput handleChange={fn} searchValue="Value" />);
     const input = screen.getByPlaceholderText(/type your search/i);
     const value = "Value";
 
     userEvent.type(input, value);
 
-    expect(input.value).toBe(value);
+    expect(input.value).toBe("Value");
 
     expect(fn).toHaveBeenCalledTimes(value.length);
   });
