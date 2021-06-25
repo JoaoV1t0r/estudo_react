@@ -4,7 +4,8 @@ import { Button } from ".";
 
 describe("<Button />", () => {
   it("should render the button with the text", () => {
-    render(<Button text="Load More" />);
+    const fn = jest.fn();
+    render(<Button text="Load more" disabled={false} onClick={fn} />);
 
     const button = screen.getByRole("button", { name: /load more/i });
 
@@ -23,7 +24,8 @@ describe("<Button />", () => {
   });
 
   it("should be disabled when disabled is true", () => {
-    render(<Button disabled={true} />);
+    const fn = jest.fn();
+    render(<Button text="Load more" disabled={true} onClick={fn} />);
 
     const button = screen.getByRole("button");
 
