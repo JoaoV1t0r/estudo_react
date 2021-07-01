@@ -37,9 +37,9 @@ export const Home = () => {
     handleLoadPosts(0, postPerPage);
   }, [handleLoadPosts, postPerPage]);
 
-  const noMorePosts = posts.length >= allPosts.length;
+  const noMorePosts = page + postPerPage >= allPosts.length;
 
-  const filterePosts = !!searchValue
+  const filteredPosts = searchValue
     ? allPosts.filter((allPosts) => {
         return allPosts.title.toLowerCase().includes(searchValue.toLowerCase());
       })
@@ -51,8 +51,8 @@ export const Home = () => {
         {!!searchValue && <h1>Search: {searchValue}</h1>}
         <TextInput handleChange={handleChange} searchValue={searchValue} />
       </div>
-      {filterePosts.length > 0 && <Posts posts={filterePosts} />}
-      {filterePosts.length === 0 && <p>Não existem postes com esse título</p>}
+      {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
+      {filteredPosts.length === 0 && <p>Não existem postes com esse título</p>}
 
       <div className="button-container">
         {!searchValue && (
